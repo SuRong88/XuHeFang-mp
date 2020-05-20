@@ -1,0 +1,76 @@
+<view class="container">
+    <mp-header isHome="{{isHome}}" showBack title="确认订单"></mp-header>
+    <view class="content">
+        <!-- 头 -->
+        <view class="content-hd ">
+            <view class="brief flex">
+                <view class="brief-l">
+                    <image mode="aspectFill" class="brief-img" src="/images/all/img02.png"></image>
+                </view>
+                <view class="brief-r">
+                    <view class="brief-tit line-hide line-2">宫崎骏·久石让动漫视听系列主题音乐会宫崎骏·久石让动漫视听系列主题音乐会</view>
+                    <view class="brief-others">
+                        <view class="brief-date">
+                            2020.04.19
+                        </view>
+                        <view class="brief-time">
+                            20:30-21:30 演出场
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="hd-tips flex flex-ver">
+                <image class="tip-icon" src="/images/all/icon05.png"></image>
+                <text class="tip-txt">不支持退票</text>
+            </view>
+            <view class="hd-address">
+                <view class="address-t flex flex-ver">
+                    <image class="hd-icon" src="/images/all/icon07.png"></image>
+                    <text class="hd-txt">泉州木偶剧院</text>
+                </view>
+                <view class="address-b">
+                    福建省泉州市丰泽区华清路与泉山路交叉口西北100米
+                </view>
+            </view>
+        </view>
+        <!-- 身 -->
+        <view class="content-bd">
+            <view class="order-infos">
+                <view class="info-item flex flex-sb flex-ver">
+                    <view class="item-label">购票等级</view>
+                    <view class="item-txt">二等票</view>
+                </view>
+                <view class="info-item flex flex-sb flex-ver">
+                    <view class="item-label">票单价</view>
+                    <view class="item-txt">¥180</view>
+                </view>
+                <view class="info-item flex flex-sb flex-ver">
+                    <view class="item-label">订票数量</view>
+                    <view class="item-txt">1</view>
+                </view>
+                <view class="info-item flex flex-sb flex-ver">
+                    <view class="item-label">联系人</view>
+                    <view class="item-txt contact-txt">
+                        郑某某 15626129191
+                       </view>
+                    <image class="arrow-icon" src="/images/all/icon14.png"></image>
+                </view>
+            </view>
+        </view>
+
+        <!-- 操作按钮 -->
+        <view class="fix-bottom-box flex flex-jcsb flex-ver">
+            <view class="price-box flex flex-ver">
+                <view class="price-now">
+                    总计：¥180.00
+                </view>
+                <!-- <view class="price-old">
+                    ¥210.00
+                </view> -->
+            </view>
+            <view class="submit-btn flex flex-center {{true?'':'btn-disabled'}}">
+                提交订单
+            </view>
+        </view>
+    </view>
+</view>

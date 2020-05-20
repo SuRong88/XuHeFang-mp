@@ -1,0 +1,92 @@
+<view class="container">
+    <!-- <mp-header isHome="{{isHome}}" showBack cln="'header'" title="首页"></mp-header> -->
+    <view class="me-header">
+        <image class="banner-bg" mode="widthFix" src="/images/all/bg02_mine.png"></image>
+        <view class="info-box flex">
+            <view class="avatar-box">
+                <image class="avatar" mode="aspectFill" src="/images/all/img06.png"></image>
+            </view>
+            <view class="info-others">
+                <view class="info-others-nickname flex flex-ver">
+                    <text class="nickname">我是昵称</text>
+                    <image class="arrow-icon" mode="aspectFill" src="/images/all/icon17.png"></image>
+                </view>
+                <view wx:if="{{false}}" bindtap="base_jump" data-url="/pages/me/completeInfo/completeInfo" class="info-others-tips flex flex-ver flex-align-center">
+                    <text class="tip-txt">完善信息后可升级为会员</text>
+                    <image class="arrow-icon-mini" mode="aspectFill" src="/images/all/icon17.png"></image>
+                </view>
+                <view wx:else bindtap="base_jump" data-url="/pages/me/viewInfo/viewInfo" class="info-others-tips flex flex-ver flex-align-center"
+                    style="width: 120rpx;">
+                    <image class="vip-icon" mode="widthFix" src="/images/all/icon29.png"></image>
+                    <text class="tip-txt">会员</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="content">
+        <view class="tool-bar">
+            <view class="tool-top flex flex-jcsb flex-ver">
+                <view class="tool-tit">
+                    我的订单
+                </view>
+                <view bindtap="base_jump" data-url="/pages/me/orderList/orderList?status=0" class="tool-view-all flex flex-ver">
+                    <text class="view-all">查看全部</text>
+                    <image class="item-arrow" src="/images/all/icon18.png"></image>
+                </view>
+            </view>
+            <view class="tool-tab flex flex-sa">
+                <view bindtap="base_jump" data-url="/pages/me/orderList/orderList?status=1" class="tab-item">
+                    <image class="tab-icon" src="/images/all/icon19.png"></image>
+                    <view class="tab-txt">
+                        待支付
+                    </view>
+                    <view class="tab-notification flex flex-center">2</view>
+                </view>
+                <view bindtap="base_jump" data-url="/pages/me/orderList/orderList?status=2" class="tab-item">
+                    <image class="tab-icon" src="/images/all/icon20.png"></image>
+                    <view class="tab-txt">
+                        待兑换
+                    </view>
+                    <view class="tab-notification flex flex-center">2</view>
+                </view>
+                <view bindtap="base_jump" data-url="/pages/me/orderList/orderList?status=3" class="tab-item">
+                    <image class="tab-icon" src="/images/all/icon21.png"></image>
+                    <view class="tab-txt">
+                        已完成
+                    </view>
+                    <view class="tab-notification flex flex-center">2</view>
+                </view>
+                <view bindtap="base_jump" data-url="/pages/me/orderList/orderList?status=4" class="tab-item">
+                    <image class="tab-icon" src="/images/all/icon22.png"></image>
+                    <view class="tab-txt">
+                        已关闭
+                    </view>
+                    <view class="tab-notification flex flex-center">2</view>
+                </view>
+            </view>
+        </view>
+        <view class="menu-list">
+            <view bindtap="base_jump" data-url="/pages/me/collectList/collectList" class="menu-item flex flex-ver">
+                <image class="item-icon" src="/images/all/icon24.png"></image>
+                <text class="item-txt">我的收藏</text>
+                <image class="item-arrow" src="/images/all/icon23.png"></image>
+            </view>
+            <view bindtap="base_jump" data-url="/pages/me/contactList/contactList" class="menu-item flex flex-ver">
+                <image class="item-icon" src="/images/all/icon25.png"></image>
+                <text class="item-txt">常用联系人</text>
+                <image class="item-arrow" src="/images/all/icon23.png"></image>
+            </view>
+            <view bindtap="base_jump" data-url="/pages/aboutUs/aboutUs" class="menu-item flex flex-ver">
+                <image class="item-icon" src="/images/all/icon26.png"></image>
+                <text class="item-txt">关于我们</text>
+                <image class="item-arrow" src="/images/all/icon23.png"></image>
+            </view>
+            <view bindtap="base_jump" data-url="/pages/contactUs/contactUs" class="menu-item flex flex-ver">
+                <image class="item-icon" src="/images/all/icon27.png"></image>
+                <text class="item-txt">联系客服</text>
+                <image class="item-arrow" src="/images/all/icon23.png"></image>
+            </view>
+        </view>
+    </view>
+    <mp-tabbar tabbarIndex="1"></mp-tabbar>
+</view>

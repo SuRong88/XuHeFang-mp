@@ -1,0 +1,50 @@
+<view class="container">
+    <mp-header isHome="{{isHome}}" showBack cln="''" title="常用联系人"></mp-header>
+    <view class="content">
+        <!-- 1有结果 -->
+        <view wx:if="{{list.length>0}}" class="contact-list">
+            <view wx:for="{{list}}" wx:key="index" class="contact-item">
+                <view class="item-t flex flex-ver flex-jcsb">
+                    <view class="item-name">
+                        {{item.name}}
+                    </view>
+                    <view class="item-phone">
+                        {{item.phone}}
+                    </view>
+                </view>
+                <view class="item-b flex flex-ver flex-jcsb">
+                    <view class="default-box  flex flex-ver">
+                        <image class="default-icon" src="/images/all/icon38.png"></image>
+                        <text class="default-txt">{{true?'设为默认':'默认联系人'}}</text>
+                    </view>
+                    <view class="operate-box  flex flex-ver">
+                        <view bindtap="base_jump" data-url="/pages/me/contactEdit/contactEdit?index={{index}}" class="operate-item flex flex-ver">
+                            <image class="operate-icon" src="/images/all/icon39.png"></image>
+                            <text class="operate-txt">编辑</text>
+                        </view>
+                        <view bindtap="showMask" data-index="{{index}}" class="operate-item flex flex-ver">
+                            <image class="operate-icon" src="/images/all/icon40.png"></image>
+                            <text class="operate-txt">删除</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 2无结果 -->
+        <view wx:else class="empty-box">
+            <view class="tips-box">
+                <image class="tip-img" mode="widthFix" src="/images/all/icon31.png"></image>
+                <view class="tip-txt">暂无联系人</view>
+            </view>
+        </view>
+        <!-- 添加 -->
+        <view bindtap="base_jump" data-url="/pages/me/contactAdd/contactAdd" class="common-btn">
+            <image class="btn-icon" mode="aspectFill" src="/images/all/icon41.png"></image>
+            <text class="btn-txt">添加</text>
+        </view>
+    </view>
+    <!-- 删除 -->
+    <mp-popBox wx:if="{{showMask}}" title="确定删除联系人？" bind:confirm='confirmDelete' bind:cancel='cancelDelete'
+        confirmText="确定">
+    </mp-popBox>
+</view>

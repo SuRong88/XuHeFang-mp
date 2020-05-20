@@ -1,0 +1,166 @@
+<view class="container">
+    <mp-header isHome="{{isHome}}" showBack title="演出详情"></mp-header>
+    <view class="content">
+        <!-- 头 -->
+        <view class="content-hd ">
+            <view class="brief flex">
+                <view class="brief-l">
+                    <image mode="aspectFill" class="brief-img" src="/images/all/img02.png"></image>
+                </view>
+                <view class="brief-r">
+                    <view class="brief-tit line-hide line-2">宫崎骏·久石让动漫视听系列主题音乐会宫崎骏·久石让动漫视听系列主题音乐会</view>
+                    <view class="brief-remain">
+                        库存：360
+                    </view>
+                    <view class="brief-price">
+                        ¥<text class="price">280</text>
+                    </view>
+                </view>
+            </view>
+            <view class="hd-tips flex flex-ver">
+                <image class="tip-icon" src="/images/all/icon05.png"></image>
+                <text class="tip-txt">不支持退票</text>
+            </view>
+            <view class="hd-date flex flex-ver">
+                <image class="hd-icon" src="/images/all/icon06.png"></image>
+                <text class="hd-txt">2020.04.19</text>
+            </view>
+            <view class="hd-address">
+                <view class="address-t flex flex-ver">
+                    <image class="hd-icon" src="/images/all/icon07.png"></image>
+                    <text class="hd-txt">泉州木偶剧院</text>
+                </view>
+                <view class="address-b">
+                    福建省泉州市丰泽区华清路与泉山路交叉口西北100米
+                </view>
+            </view>
+        </view>
+        <!-- 身 -->
+        <view class="content-bd">
+            <view class="intro-tit">
+                演出介绍
+            </view>
+            <view class="intro-box01">
+                <view class="intro-box01-item">
+                    演出团体：旭和坊室内乐团
+                </view>
+                <view class="intro-box01-item">
+                    演出地点：福建省泉州市丰泽区华清路与泉山路交叉口西北100米泉州木偶剧院
+                </view>
+                <view class="intro-box01-item">
+                    演出时长：90分钟（含中场休息10分钟）
+                </view>
+                <view class="intro-box01-item">
+                    演出票价：60/180/280
+                </view>
+                <view class="intro-box01-item">
+                    温馨提示：一人一票
+                </view>
+                <view class="intro-box01-item">
+                    退换说明：票品不支持退换。如无法正常观看，还请自行处理，给您带来不便敬请谅解。
+                </view>
+            </view>
+            <view class="intro-box02">
+                <view class="">
+                    【演出介绍】
+                </view>
+            </view>
+        </view>
+
+        <!-- 操作按钮 -->
+        <view class="fix-bottom-box flex flex-jcsb flex-ver">
+            <!-- 1.订票 -->
+            <block wx:if="{{!showSelected}}">
+                <view class="share-collect-box flex flex-ver">
+                    <button open-type="share" class="btn-share">
+                        <image class="btn-icon" src="/images/all/icon08.png"></image>
+                        <view class="btn-txt">分享</view>
+                    </button>
+                    <view class="spe"></view>
+                    <!-- 未收藏 -->
+                    <button class="btn-collect">
+                        <image class="btn-icon" src="/images/all/{{true?'icon10':'icon09'}}.png"></image>
+                        <view class="btn-txt">{{true?'已收藏':'收藏'}}</view>
+                    </button>
+                    <!-- 已收藏 -->
+                    <button hidden class="btn-collect is-collected">
+                        <image class="btn-icon" src="/images/all/icon10.png"></image>
+                        <view class="btn-txt">收藏</view>
+                    </button>
+                </view>
+                <view bindtap="showSelect" class="order-btn flex flex-center {{true?'':'btn-disabled'}}">
+                    订票
+                </view>
+            </block>
+            <!-- 2.提交订单 -->
+            <block wx:else>
+                <view class="price-box flex flex-ver">
+                    <view class="price-now">
+                        总计：¥180.00
+                    </view>
+                    <view class="price-old">
+                        ¥210.00
+                    </view>
+                </view>
+                <view class="submit-btn flex flex-center {{true?'':'btn-disabled'}}">
+                    提交订单
+                </view>
+            </block>
+        </view>
+        <!-- 选择 -->
+        <view bindtap="hideSelect" class="select-mask {{showSelected?'spread':''}}">
+            <view class="select-box " catchtouchmove="emptyHandle" catchtap="emptyHandle">
+                <image bindtap="hideSelect" class="close-icon" src="/images/all/icon11.png"></image>
+                <scroll-view scroll-y class="scroll-box">
+                    <view class="select-time">
+                        <view class="select-hd">场次时间</view>
+                        <view class="select-bd">
+                            <view class="time-item flex flex-center checked">
+                                2020.04.20 周五 19:30-20:30预热场
+                            </view>
+                            <view class="time-item flex flex-center ">
+                                2020.04.20 周五 19:30-20:30预热场
+                            </view>
+                            <view class="time-item flex flex-center disabled">
+                                2020.04.20 周五 19:30-20:30预热场
+                            </view>
+                        </view>
+                    </view>
+                    <view class="select-class">
+                        <view class="select-hd">购票等级</view>
+                        <view class="select-bd flex">
+                            <view class="class-item flex flex-center">
+                                一等票
+                            </view>
+                            <view class="class-item flex flex-center checked">
+                                二等票
+                            </view>
+                            <view class="class-item flex flex-center disabled">
+                                三等票
+                            </view>
+                        </view>
+                    </view>
+                    <view class="select-count">
+                        <view class="select-hd flex flex-ver flex-jcsb">
+                            <view>购买数量</view>
+                            <view class="add-reduce flex flex-ver">
+                                <image class="btn-icon" src="/images/all/icon12.png"></image>
+                                <text class="count">1</text>
+                                <image class="btn-icon" src="/images/all/icon13.png"></image>
+                            </view>
+                        </view>
+                        <view class="select-bd flex flex-jcsb">
+                            <view class="remain">
+                                999+
+                            </view>
+                            <view class="limit">
+                                限购<text class="limit-num">50</text>张
+                            </view>
+                        </view>
+                    </view>
+
+                </scroll-view>
+            </view>
+        </view>
+    </view>
+</view>

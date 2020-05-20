@@ -1,0 +1,15 @@
+<view class="container">
+    <mp-header isHome="{{isHome}}" showBack title="{{titleArr[titleIndex]}}"></mp-header>
+    <view class="content">
+        <view class="result-tip">
+            <image class="result-img" mode="widthFix" src="/images/all/icon{{titleIndex==0?'15':'16'}}.png"></image>
+            <view class="tip-txt-box text-c">
+                <text class="tip-txt">{{titleArr[titleIndex]}}</text>
+                <text wx:if="{{titleIndex==0}}" class="tip-txt">请前往活动现场兑换入场门票</text>
+            </view>
+        </view>
+        <view wx:if="{{titleIndex==1}}" bindtap="rePay" class="common-btn normal btn-view">重新支付</view>
+        <view wx:else bindtap="base_jump" class="common-btn normal btn-view">查看订单</view>
+        <view bindtap="base_jump" data-url="/pages/index/index" data-type="redirect" class="common-btn normal btn-back">返回首页</view>
+    </view>
+</view>

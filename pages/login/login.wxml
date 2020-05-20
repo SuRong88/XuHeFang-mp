@@ -1,0 +1,12 @@
+<view class="container">
+    <!-- <mp-header isHome="{{isHome}}" showBack title=""></mp-header> -->
+    <view class="login-header">
+        <image class="banner-bg" mode="widthFix" src="/images/all/bg04.png"></image>
+    </view>
+    <view class="content">
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="login-btn flex flex-ver flex-align-center">
+            <image class="login-icon" mode="widthFix" src="/images/all/wx-icon.png"></image>
+            <text class="login-txt">微信用户快速登录</text>
+        </button>
+    </view>
+</view>

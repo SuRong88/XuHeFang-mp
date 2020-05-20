@@ -1,0 +1,35 @@
+.content {
+    padding-top: 50vh;
+}
+
+.login-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+.login-header .banner-bg {
+    width: 100%;
+}
+
+.login-btn {
+    margin: 0 auto;
+    width: 462rpx;
+    height: 80rpx;
+    background: linear-gradient(40deg, rgba(4, 203, 121, 1) 0%, rgba(73, 220, 142, 1) 100%);
+    border-radius: 40rpx;
+}
+
+
+.login-icon {
+    width: 42rpx;
+    height: 42rpx;
+}
+
+.login-txt {
+    font-size: 28rpx;
+    color: rgba(255, 255, 255, 1);
+    padding-left: 24rpx;
+}

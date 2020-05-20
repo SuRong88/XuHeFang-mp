@@ -1,0 +1,248 @@
+page {
+    background: rgba(249, 249, 249, 1) !important;
+}
+
+.content {
+    padding-bottom: 150rpx;
+}
+
+.content-hd {
+    padding: 30rpx 40rpx 0rpx;
+    margin-bottom: 20rpx;
+    background-color: #fff;
+}
+
+.brief {
+    height: 262rpx;
+}
+
+.brief-l {
+    flex-shrink: 0;
+    width: 200rpx;
+    border-radius: 10rpx;
+    position: relative;
+    overflow: hidden;
+}
+
+.brief-l .brief-img {
+    width: 100%;
+    height: 100%;
+}
+
+.brief-r {
+    margin-left: 30rpx;
+    position: relative;
+}
+
+.brief-r .brief-tit {
+    font-size: 32rpx;
+    font-weight: 700;
+    color: rgba(29, 29, 29, 1);
+    line-height: 44rpx;
+    margin-bottom: 10rpx;
+}
+
+.brief-r .brief-details {
+    font-size: 22rpx;
+    color: rgba(153, 153, 153, 1);
+    line-height: 26rpx;
+}
+
+.brief-r .brief-date {
+    margin-bottom: 8rpx;
+}
+
+.brief-r .brief-address {
+    margin-bottom: 8rpx;
+}
+
+.brief-r .brief-remain {
+    margin-bottom: 0;
+}
+
+.brief-r .brief-others {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.brief-r .brief-date {
+    margin-bottom: 20rpx;
+    font-size: 28rpx;
+    color: rgba(102, 102, 102, 1);
+    line-height: 34rpx;
+}
+
+.brief-r .brief-time {
+    font-size: 28rpx;
+    color: rgba(102, 102, 102, 1);
+    line-height: 34rpx;
+}
+
+
+.hd-tips {
+    padding: 34rpx 0;
+    border-bottom: 1px solid #f6f6f6;
+}
+
+.tip-icon {
+    width: 28rpx;
+    height: 28rpx;
+}
+
+.tip-txt {
+    font-size: 24rpx;
+    padding-left: 10rpx;
+    color: rgba(153, 153, 153, 1);
+}
+
+.hd-date {
+    padding: 34rpx 0;
+    border-bottom: 1px solid #f6f6f6;
+}
+
+.hd-icon {
+    width: 32rpx;
+    height: 32rpx;
+}
+
+.hd-txt {
+    padding-left: 14rpx;
+    font-size: 32rpx;
+    font-weight: 700;
+    color: rgba(51, 51, 51, 1);
+}
+
+.hd-address {
+    padding: 34rpx 0 46rpx;
+}
+
+.address-t {
+    margin-bottom: 14rpx;
+}
+
+.address-b {
+    font-size: 24rpx;
+    color: rgba(153, 153, 153, 1);
+    line-height: 34rpx;
+    padding-left: 48rpx;
+}
+
+.content-bd {
+    background-color: #fff;
+}
+
+.order-infos {
+    padding: 0 40rpx;
+}
+
+.info-item {
+    padding: 32rpx 0;
+    border-bottom: 1px solid #F4F3F3;
+    position: relative;
+}
+
+.item-label {
+    font-size: 28rpx;
+    color: rgba(53, 53, 53, 1);
+    line-height: 40rpx;
+}
+
+.item-txt {
+    font-size: 28rpx;
+    color: rgba(53, 53, 53, 1);
+    line-height: 40rpx;
+}
+
+.contact-txt {
+    margin-right: 50rpx;
+}
+
+.arrow-icon {
+    width: 40rpx;
+    height: 40rpx;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.fix-bottom-box {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 99;
+    width: 100%;
+    padding: 0 40rpx;
+    height: 120rpx;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px -2rpx 4rpx 0px rgba(0, 0, 0, 0.1);
+}
+
+.fix-bottom-box .share-collect-box {
+    padding-left: 20rpx;
+}
+
+.fix-bottom-box .btn-share {
+    text-align: center;
+}
+
+.fix-bottom-box .btn-collect {
+    text-align: center;
+}
+
+.fix-bottom-box .btn-collect.is-collected .btn-txt {
+    color: #49DC8E;
+}
+
+.fix-bottom-box .btn-icon {
+    width: 48rpx;
+    height: 48rpx;
+    margin-bottom: 6rpx;
+}
+
+.fix-bottom-box .btn-txt {
+    font-size: 20rpx;
+    color: rgba(102, 102, 102, 1);
+}
+
+.fix-bottom-box .spe {
+    width: 2rpx;
+    height: 30rpx;
+    margin: 0 36rpx;
+    background: rgba(216, 216, 216, 1);
+}
+
+.fix-bottom-box .order-btn {
+    width: 300rpx;
+    height: 84rpx;
+    background: linear-gradient(360deg, rgba(4, 203, 121, 1) 0%, rgba(73, 220, 142, 1) 100%);
+    border-radius: 8rpx;
+    font-size: 34rpx;
+    color: rgba(255, 255, 255, 1);
+}
+
+.price-box {}
+
+.price-box .price-now {
+    font-size: 36rpx;
+    font-weight: 700;
+    color: rgba(252, 84, 3, 1);
+}
+
+.price-box .price-old {
+    padding-left: 22rpx;
+    font-size: 24rpx;
+    color: rgba(102, 102, 102, 1);
+    text-decoration: line-through;
+}
+
+
+.submit-btn {
+    width: 220rpx;
+    height: 84rpx;
+    background: linear-gradient(360deg, rgba(4, 203, 121, 1) 0%, rgba(73, 220, 142, 1) 100%);
+    border-radius: 8rpx;
+    font-size: 34rpx;
+    color: rgba(255, 255, 255, 1);
+}

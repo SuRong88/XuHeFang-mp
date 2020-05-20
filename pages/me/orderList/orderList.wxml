@@ -1,0 +1,82 @@
+<view class="container">
+    <mp-header cln="'header'" showBack title="我的订单"></mp-header>
+    <view class="content">
+        <scroll-view style="top: {{padHeight}}rpx;" scroll-x class="nav-menu-box">
+            <view class="nav-menu flex">
+                <view bindtap="changeStatus" data-status="0" class="nav-item {{status==0?'active':''}}">
+                    全部
+                </view>
+                <view bindtap="changeStatus" data-status="1" class="nav-item {{status==1?'active':''}}">
+                    待支付
+                </view>
+                <view bindtap="changeStatus" data-status="2" class="nav-item {{status==2?'active':''}}">
+                    待兑换
+                </view>
+                <view bindtap="changeStatus" data-status="3" class="nav-item {{status==3?'active':''}}">
+                    已完成
+                </view>
+                <view bindtap="changeStatus" data-status="4" class="nav-item {{status==4?'active':''}}">
+                    已关闭
+                </view>
+            </view>
+        </scroll-view>
+        <!-- 1有结果 -->
+        <view wx:if="{{!true}}" class="order-list">
+            <view class="order-item" wx:for="{{6}}" wx:key="index">
+                <view class="item-t flex">
+                    <view class="item-cover-box">
+                        <image src="../../../images/all/img05.jpg" class="item-cover" mode="aspectFill"></image>
+                    </view>
+                    <view class="item-infos">
+                        <view class="item-tit flex-1 line-hide line-2">
+                            宫崎骏·久石让动漫视听系列主题音乐会宫崎骏·久石让动漫视听系列主题音乐会
+                        </view>
+                        <view class="item-others">
+                            <view class="item-date">
+                                2020.04.19
+                            </view>
+                            <view class="item-time">
+                                20:30-21:30 演出场
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="item-b flex flex-ver flex-sb">
+                    <view class="price-box flex flex-ver">
+                        <view class="price-label">
+                            总价
+                        </view>
+                        <view class="item-price">
+                            ￥180.00
+                        </view>
+                    </view>
+                    <view class="btn-box flex flex-ver">
+                        <view class="item-btn plain">取消</view>
+                        <view class="item-btn plain" bindtap="base_jump" data-url="/pages/me/orderDetail/orderDetail">详情</view>
+                        <view class="item-btn ">支付</view>
+                        <!-- 
+                         <view class="item-btn">详情</view>
+                        -->
+                        <!-- 
+                          <view class="item-btn plain">删除</view>
+                          <view class="item-btn">详情</view>
+                        -->
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 2没结果 -->
+        <view wx:else class="empty-box">
+            <view class="tips-box">
+                <image class="tip-img" mode="widthFix" src="/images/all/icon31.png"></image>
+                <view class="tip-txt">暂无订单</view>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 取消 -->
+<mp-popBox wx:if="{{showCancel}}" title="确定要取消该订单吗？" bind:confirm='confirmCancel' bind:cancel='cancelCancel'>
+</mp-popBox>
+<!-- 删除 -->
+<mp-popBox wx:if="{{showDelete}}" title="确定要删除该订单吗？" bind:confirm='confirmDelete' bind:cancel='cancelDelete'>
+</mp-popBox>

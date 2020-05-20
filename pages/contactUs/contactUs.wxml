@@ -1,0 +1,16 @@
+<view class="container">
+    <mp-header isHome="{{isHome}}" showBack title="联系客服"></mp-header>
+    <view class="content">
+        <view class="contact-list">
+            <view class="contact-item flex flex-ver flex-sb">
+                <view class="item-label">客服电话</view>
+                <view bindtap="makePhoneCall" class="item-txt">{{contactTel}}</view>
+                <image bindtap="makePhoneCall" class="arrow-icon" src="/images/all/icon23.png"></image>
+            </view>
+            <view class="contact-item">
+                <view class="item-label">客服二维码</view>
+                <image bindtap="previewImage" mode="widthFix" class="qrcode" data-src="{{qrcodeUrl}}" src="{{qrcodeUrl}}"></image>
+            </view>
+        </view>
+    </view>
+</view>

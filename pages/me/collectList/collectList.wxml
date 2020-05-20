@@ -1,0 +1,44 @@
+<view class="container">
+    <mp-header isHome="{{isHome}}" showBack cln="'header'" title="我的收藏"></mp-header>
+    <view class="content">
+        <!-- 列表 -->
+        <view wx:if="{{true}}" class="collect-list">
+            <view wx:for="{{list}}" wx:key="index" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE"
+                data-index="{{index}}" class="collect-item">
+                <view style="{{item.txtStyle}}" class="item-main flex">
+                    <view class="item-l">
+                        <image mode="aspectFill" class="item-img" src="/images/all/img02.png"></image>
+                    </view>
+                    <view class="item-r">
+                        <view class="item-tit line-hide line-2">宫崎骏·久石让动漫视听系列主题音乐会宫崎骏·久石让动漫视听系列主题音乐会</view>
+                        <view class="item-details">
+                            <view class="item-date">
+                                2020.04.15-04.19
+                            </view>
+                            <view class="item-address ell">
+                                深圳南山文体中心剧院小剧院
+                            </view>
+                            <view class="item-remain">
+                                库存：360
+                            </view>
+                        </view>
+                        <view class="item-price">
+                            ¥<text class="price">280</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="item-cancel flex flex-center">
+                    <view class="item-cancel-txt">取消</view>
+                    <view class="item-cancel-txt">收藏</view>
+                </view>
+            </view>
+        </view>
+        <!-- 2无结果 -->
+        <view wx:else class="empty-box">
+            <view class="tips-box">
+                <image class="tip-img" mode="widthFix" src="/images/all/icon31.png"></image>
+                <view class="tip-txt">暂无收藏</view>
+            </view>
+        </view>
+    </view>
+</view>

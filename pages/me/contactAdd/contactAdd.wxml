@@ -1,0 +1,24 @@
+<view class="container">
+    <mp-header isHome="{{isHome}}" showBack cln="''" title="联系人"></mp-header>
+    <view class="content ">
+        <view class="input-form">
+            <view class="input-item">
+                <view class="item-label">
+                    <text class="label">姓名</text>
+                    <text class="label-desc">（必填）</text>
+                </view>
+                <input bindinput="changeInput" data-key="name" class="item-enter" placeholder="请输入姓名" placeholder-class="common-placeholder"
+                    type="text" />
+            </view>
+            <view class="input-item">
+                <view class="item-label">
+                    <text class="label">手机号</text>
+                    <text class="label-desc">（必填）</text>
+                </view>
+                <input bindinput="changeInput" data-key="phone" class="item-enter" placeholder="请输入手机号码"
+                    placeholder-class="common-placeholder" type="number" />
+            </view>
+        </view>
+        <view bindtap="subimtInfo" class="common-btn  {{disabled?'btn-disabled':''}}">保存</view>
+    </view>
+</view>

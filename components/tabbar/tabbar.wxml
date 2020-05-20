@@ -1,0 +1,10 @@
+<!--使用tabbar的页面设置padding-bottom -->
+<view class="tabbar flex flex-ver {{cln}}">
+    <view wx:for="{{tabbarList}}" wx:key="index" class="tabbar-item flex flex-center flex-1 {{tabbarIndex == index?'active':''}}"
+        bindtap="base_jump" data-url="{{item.pagePath}}" data-type="redirect">
+        <view class="tabbar-item-inner">
+            <image class="tabbar-item-icon" mode="aspectFit" src="{{tabbarIndex==index?item.selectedIconPath:item.iconPath}}"></image>
+            <view class="tabbar-item-txt">{{item.text}}</view>
+        </view>
+    </view>
+</view>

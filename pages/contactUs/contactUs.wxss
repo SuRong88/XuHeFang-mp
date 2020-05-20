@@ -1,0 +1,40 @@
+.contact-list {
+    padding: 60rpx 50rpx 0;
+}
+
+.contact-item {
+    margin-bottom: 40rpx;
+    position: relative;
+}
+
+.contact-item:last-child {
+    margin-bottom: 0rpx;
+}
+
+.item-label {
+    font-size: 30rpx;
+    color: rgba(51, 51, 51, 1);
+    line-height: 42rpx;
+}
+
+.item-txt {
+    font-size: 28rpx;
+    color: rgba(102, 102, 102, 1);
+    line-height: 40rpx;
+    margin-right: 40rpx;
+}
+
+.arrow-icon {
+    width: 24rpx;
+    height: 24rpx;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.qrcode {
+    width: 280rpx;
+    margin-top: 30rpx;
+    /* margin-top: 40rpx; */
+}

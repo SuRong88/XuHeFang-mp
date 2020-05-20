@@ -1,0 +1,53 @@
+<view class="container">
+    <!-- <mp-header isHome="{{isHome}}" showBack cln="'header'" title="首页"></mp-header> -->
+    <view class="index-header">
+        <image class="banner-bg" mode="widthFix" src="/images/all/bg01_home.png"></image>
+        <view class="banner-swiper">
+            <swiper bindchange="changeSwiper" class="swiper-container" autoplay="{{false}}" interval="5000" circular>
+                <swiper-item class="swiper-item" wx:for="{{bannerList}}" wx:key="index">
+                    <image mode="aspectFill" class="swiper-item-img" src="{{item.imgUrl}}"></image>
+                </swiper-item>
+            </swiper>
+            <view class="swiper-pagination flex flex-center">
+                <view class="flex pagination-block">
+                    <view class="{{swiperIndex == index?'active':''}}" wx:key="index" wx:for="{{bannerList.length}}"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="content">
+        <!-- vip升级 -->
+        <view class="vip-tip">
+            <image mode="widthFix" class="vip-img" src="/images/all/banner02.png"></image>
+            <view class="vip-btn flex flex-center">升级</view>
+        </view>
+        <!-- 列表 -->
+        <view class="con-list">
+            <!-- status01 status02 status03 -->
+            <view wx:for="{{10}}" wx:key="index" bindtap="base_jump" data-url="/pages/activityDetail/activityDetail" class="con-item flex">
+                <view class="item-l">
+                    <view class="item-status {{item%2==0?'status01':'status02'}} flex flex-center">进行中</view>
+                    <image mode="aspectFill" class="item-img" src="/images/all/img02.png"></image>
+                </view>
+                <view class="item-r">
+                    <view class="item-tit line-hide line-2">宫崎骏·久石让动漫视听系列主题音乐会宫崎骏·久石让动漫视听系列主题音乐会</view>
+                    <view class="item-details">
+                        <view class="item-date">
+                            2020.04.15-04.19
+                        </view>
+                        <view class="item-address ell">
+                            深圳南山文体中心剧院小剧院
+                        </view>
+                        <view class="item-remain">
+                            库存：360
+                        </view>
+                    </view>
+                    <view class="item-price">
+                        ¥<text class="price">280</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <mp-tabbar tabbarIndex="0"></mp-tabbar>
+</view>
