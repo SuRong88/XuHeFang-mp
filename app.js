@@ -8,8 +8,8 @@ App({
     },
     globalData: {
         isConnected: true,
+        isLogined: false,
         userInfo: null,
-        roleType: 1 //用户角色 1-服务商、2-商家
     },
     // 展示本地存储能力
     showLogs: function() {
@@ -40,11 +40,18 @@ App({
     userLogin: function(cb_success) {
         wx.login({
             success: res1 => {
+                let code = res1.code
                 wx.getUserInfo({
                     success: res2 => {
+                        console.log(res2);
                         let userInfo = res2.userInfo
+                        let {
+                            iv,
+                            encryptedData
+                        } = res2
                         this.globalData.userInfo = userInfo
                         // todo
+                        cb_success(code, iv, encryptedData)
                     }
                 })
             },

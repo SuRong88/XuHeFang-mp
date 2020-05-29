@@ -5,33 +5,27 @@ const Base = require('../../../utils/base.js');
 const Req = require('../../../utils/request.js');
 const VM = {
     data: {
-        list: [{
-                id: 1,
-                name: '名字1',
-                phone: '15015050141'
-            },
-            {
-                id: 2,
-                name: '名字2',
-                phone: '15015050142'
-            },
-            {
-                id: 3,
-                name: '名字3',
-                phone: '15015050143'
-            },
-            {
-                id: 4,
-                name: '名字4',
-                phone: '15015050144'
-            }
-        ],
+        type: '',
+        list: [],
         showMask: false,
         deleteIndex: -1
     }
 }
 
-VM.init = function(query) {}
+VM.init = function(query) {
+    if (query && query.type && query.type == 'select') {
+        this.setData({
+            type: query.type
+        })
+    }
+    Req.request('getContactList', null, {
+        method: 'get'
+    }, (res) => {
+        this.setData({
+            list: res.data
+        })
+    })
+}
 
 VM.onLoad = function(query) {
     this.init(query)
@@ -48,17 +42,22 @@ VM.showMask = function(e) {
 }
 
 VM.confirmDelete = function() {
-    // todo
-
     let list = this.data.list
     let deleteIndex = this.data.deleteIndex
-    list.splice(deleteIndex, 1)
-    this.setData({
-        list: list,
-        deleteIndex: -1,
-        showMask: false
+    let id = list[deleteIndex].id
+    Req.request('deleteContact', {
+        id: id
+    }, {
+        method: 'delete'
+    }, (res) => {
+        list.splice(deleteIndex, 1)
+        this.setData({
+            list: list,
+            deleteIndex: -1,
+            showMask: false
+        })
+        Util.Toast('已成功删除')
     })
-    Util.Toast('已成功删除')
 }
 
 VM.cancelDelete = function() {
@@ -68,4 +67,51 @@ VM.cancelDelete = function() {
     })
 }
 
+// 设置默认
+VM.setDefault = function(e) {
+    let index = Util.dataset(e, 'index')
+    let list = this.data.list
+    let {
+        id,
+        name,
+        phone,
+        is_default
+    } = list[index]
+    if (list[index].is_default == 1) {
+        return
+    }
+    list.forEach(item => {
+        item.is_default = 0
+    })
+    Req.request('editContact', {
+        id: id,
+        name: name,
+        phone: phone,
+        is_default: 1
+    }, {
+        method: 'put'
+    }, (res) => {
+        Util.Toast('设置成功')
+        list[index].is_default = 1
+        this.setData({
+            list: list
+        })
+    })
+}
+
+VM.selectContact = function(e) {
+    if (this.data.type != 'select') {
+        return
+    }
+    let index = Util.dataset(e, 'index')
+    let list = this.data.list
+    let pages = getCurrentPages()
+    let prevPage = pages[pages.length - 2]
+    prevPage.setData({
+        contactInfo: list[index]
+    })
+    wx.navigateBack({
+        delta: 1
+    })
+}
 Page(VM)

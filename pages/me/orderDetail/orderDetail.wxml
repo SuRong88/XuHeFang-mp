@@ -4,34 +4,37 @@
         <view style="top: {{padHeight}}rpx;" class="order-status">
             <image class="status-bg" mode="aspectFill" src="/images/all/bg03.jpg"></image>
             <view class="status-infos flex flex-ver">
-                <image class="status-icon" src="/images/all/icon32.png"></image>
-                <view class="status-txt">待支付</view>
-                <view class="status-tip">订单将在14:59:59后自动关闭</view>
-                <!-- 请到现场核销兑换 -->
-                <!-- 已成功兑换门票 -->
-                <!-- 超时未支付 -->
+                <image class="status-icon" src="/images/all/icon{{iconArr[orderInfo.status-1]}}.png"></image>
+                <view class="status-txt">{{statusArr[orderInfo.status-1]}}</view>
+                <view wx:if="{{orderInfo.status==1}}" class="status-tip">订单将在{{downtime}}后自动关闭</view>
+                <view wx:if="{{orderInfo.status==2}}" class="status-tip">请到现场核销兑换</view>
+                <view wx:if="{{orderInfo.status==3}}" class="status-tip">已成功兑换门票</view>
+                <!-- <view wx:if="{{orderInfo.status==4}}" class="status-tip">超时未支付</view> -->
             </view>
         </view>
     </view>
     <view class="content">
-        <view class="ticket-box">
-            <image bindtap="previewImage" mode="widthFix" data-src="{{qrcodeUrl}}" src="{{qrcodeUrl}}" mode="widthFix" class="ticket-qrcode"></image>
+        <view wx:if="{{orderInfo.status==2||orderInfo.status==3}}" class="ticket-box">
+            <image bindtap="previewImage" mode="widthFix" data-src="{{orderInfo.code}}" src="{{orderInfo.code}}" mode="widthFix"
+                class="ticket-qrcode"></image>
             <view class="ticket-tit">兑换码</view>
         </view>
         <!-- 头 -->
         <view class="content-hd ">
             <view class="brief flex">
                 <view class="brief-l">
-                    <image mode="aspectFill" class="brief-img" src="/images/all/img02.png"></image>
+                    <image mode="aspectFill" class="brief-img" src="{{orderInfo.detail[0].cover}}"></image>
                 </view>
                 <view class="brief-r">
-                    <view class="brief-tit line-hide line-2">宫崎骏·久石让动漫视听系列主题音乐会宫崎骏·久石让动漫视听系列主题音乐会</view>
+                    <view class="brief-tit line-hide line-2">
+                        {{orderInfo.detail[0].name}}
+                    </view>
                     <view class="brief-others">
                         <view class="brief-date">
-                            2020.04.19
+                            {{date}}
                         </view>
                         <view class="brief-time">
-                            20:30-21:30 演出场
+                            {{time}}
                         </view>
                     </view>
                 </view>
@@ -43,10 +46,10 @@
             <view class="hd-address">
                 <view class="address-t flex flex-ver">
                     <image class="hd-icon" src="/images/all/icon07.png"></image>
-                    <text class="hd-txt">泉州木偶剧院</text>
+                    <text class="hd-txt">{{orderInfo.address}}</text>
                 </view>
                 <view class="address-b">
-                    福建省泉州市丰泽区华清路与泉山路交叉口西北100米
+                    {{orderInfo.address_full}}
                 </view>
             </view>
         </view>
@@ -55,49 +58,67 @@
             <view class="order-infos">
                 <view class="info-item flex flex-sb flex-ver">
                     <view class="item-label">购票等级</view>
-                    <view class="item-txt">二等票</view>
+                    <view class="item-txt">{{orderInfo.detail[0].spec_level}}</view>
                 </view>
                 <view class="info-item flex flex-sb flex-ver">
                     <view class="item-label">票单价</view>
-                    <view class="item-txt">¥180</view>
+                    <view class="item-txt">¥{{orderInfo.detail[0].price}}</view>
                 </view>
                 <view class="info-item flex flex-sb flex-ver">
                     <view class="item-label">订票数量</view>
-                    <view class="item-txt">1</view>
+                    <view class="item-txt">{{orderInfo.detail[0].num}}</view>
                 </view>
                 <view class="info-item flex flex-sb flex-ver">
                     <view class="item-label">联系人</view>
                     <view class="item-txt contact-txt">
-                        郑某某 15626129191
+                        {{orderInfo.contact.name}} {{orderInfo.contact.phone}}
                     </view>
                 </view>
                 <view class="info-item info-item-price flex flex-jcfe flex-ver">
                     <view class="info-price-label">合计：</view>
                     <view class="info-price">
-                        ¥180.00
+                        ¥{{orderInfo.amount}}
                     </view>
                 </view>
             </view>
             <view class="order-infos2">
-                <view class="infos2-item">订单编号：GP6366132944968</view>
-                <view class="infos2-item">创建时间：2020-04-20 14:2</view>
-                <view class="infos2-item">支付时间：2020-04-21 14:2</view>
-                <view class="infos2-item">完成时间：2020-04-22 14:2</view>
+                <view class="infos2-item">订单编号：{{orderInfo.order_sn}}</view>
+                <view class="infos2-item">创建时间：{{orderInfo.create_time}}</view>
+                <block wx:if="{{orderInfo.status==2}}">
+                    <view class="infos2-item">支付时间：{{orderInfo.pay_time}}</view>
+                </block>
+                <block wx:if="{{orderInfo.status==3}}">
+                    <view class="infos2-item">支付时间：{{orderInfo.pay_time}}</view>
+                    <view class="infos2-item">完成时间：{{orderInfo.confirm_time}}</view>
+                </block>
+                <block wx:if="{{orderInfo.status==4}}">
+                    <view class="infos2-item">关闭时间：{{orderInfo.cancel_time}}</view>
+                </block>
             </view>
         </view>
 
         <!-- 操作按钮 -->
-        <view class="fix-bottom-box flex flex-jcfe flex-ver">
-            <view bindtap="cancelOrder" class="ope-btn btn-gray flex flex-center">
-                取消
-            </view>
-
-            <view bindtap="deleteOrder" class="ope-btn btn-gray flex flex-center">
-                删除
-            </view>
-            <view bindtap="payOrder" class="ope-btn flex flex-center">
-                支付
-            </view>
+        <view wx:if="{{orderInfo.status==1||orderInfo.status==4}}" class="fix-bottom-box flex flex-jcfe flex-ver">
+            <!-- 待支付 -->
+            <block wx:if="{{orderInfo.status==1}}">
+                <view bindtap="showCancelMask" class="ope-btn btn-gray flex flex-center">
+                    取消
+                </view>
+                <view bindtap="payOrder" class="ope-btn flex flex-center">
+                    支付
+                </view>
+            </block>
+            <block wx:if="{{orderInfo.status==4}}">
+                <view bindtap="showDeleteMask" class="ope-btn btn-gray flex flex-center">
+                    删除
+                </view>
+            </block>
         </view>
     </view>
+    <!-- 取消 -->
+    <mp-popBox wx:if="{{showCancel}}" title="确定要取消该订单吗？" bind:confirm='confirmCancel' bind:cancel='cancelCancel'>
+    </mp-popBox>
+    <!-- 删除 -->
+    <mp-popBox wx:if="{{showDelete}}" title="确定要删除该订单吗？" bind:confirm='confirmDelete' bind:cancel='cancelDelete'>
+    </mp-popBox>
 </view>

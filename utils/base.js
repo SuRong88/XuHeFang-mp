@@ -17,34 +17,67 @@ function emptyHandle(e) {
 /**
  * 公用跳转
  */
+var jumpFlag = true
+
 function jump(e) {
+    if (!jumpFlag) {
+        return false;
+    }
     var pages = getCurrentPages();
     var currentPage = pages[pages.length - 1];
-    var current = currentPage.route;
-    var url = getApp().dataset(e, 'url');
+    var oldUrl = currentPage.route;
+    var newUrl = getApp().dataset(e, 'url');
     var type = getApp().dataset(e, 'type');
-    if (`/${current}` == url) {
+    // 1.未登录可跳转页面
+    var allowPages = ['/pages/index/index', '/pages/login/login']
+    var isLogined = getApp().globalData.isLogined
+    var checkIndex = newUrl.indexOf('?')
+    var checkUrl = newUrl
+    if (checkIndex >= 0) {
+        checkUrl = checkUrl.slice(0, checkIndex)
+    }
+    if (allowPages.indexOf(checkUrl) < 0 && !isLogined) {
+        wx.setStorageSync('url', newUrl)
+        return wx.navigateTo({
+            url: '/pages/login/login'
+        })
+    }
+    // 1.未登录可跳转页面 end
+    // 2.跳转
+    if (`/${oldUrl}` == newUrl) {
         return false
     }
+    jumpFlag = false
     if (type == 'reLaunch') {
-        url && wx.reLaunch({
-            url
+        newUrl && wx.reLaunch({
+            url: newUrl,
+            success: () => {
+                jumpFlag = true
+            }
         });
     } else if (type == 'switchTab') {
-        url && wx.switchTab({
-            url
+        newUrl && wx.switchTab({
+            url: newUrl,
+            success: () => {
+                jumpFlag = true
+            }
         });
     } else if (type == 'redirect') {
-        url && wx.redirectTo({
-            url
+        newUrl && wx.redirectTo({
+            url: newUrl,
+            success: () => {
+                jumpFlag = true
+            }
         });
     } else {
-        url && wx.navigateTo({
-            url
+        newUrl && wx.navigateTo({
+            url: newUrl,
+            success: () => {
+                jumpFlag = true
+            }
         });
     }
 }
-
 /**
  * 外联跳转(待测)
  */
@@ -60,13 +93,13 @@ function webJump(e) {
 /**
  * 通用预览图片
  */
-function previewImage(e){
-	var src = e.currentTarget.dataset.src;
-	if(!src) return;
-	wx.previewImage({
-		current: src, // 当前显示图片的http链接
-		urls: [src] // 需要预览的图片http链接列表
-	});
+function previewImage(e) {
+    var src = e.currentTarget.dataset.src;
+    if (!src) return;
+    wx.previewImage({
+        current: src, // 当前显示图片的http链接
+        urls: [src] // 需要预览的图片http链接列表
+    });
 };
 
 /**

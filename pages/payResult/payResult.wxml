@@ -9,7 +9,7 @@
             </view>
         </view>
         <view wx:if="{{titleIndex==1}}" bindtap="rePay" class="common-btn normal btn-view">重新支付</view>
-        <view wx:else bindtap="base_jump" class="common-btn normal btn-view">查看订单</view>
+        <view wx:else bindtap="base_jump" data-type="redirect" data-url="/pages/me/orderDetail/orderDetail?id={{orderId}}" class="common-btn normal btn-view">查看订单</view>
         <view bindtap="base_jump" data-url="/pages/index/index" data-type="redirect" class="common-btn normal btn-back">返回首页</view>
     </view>
 </view>

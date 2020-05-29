@@ -4,14 +4,16 @@
         <image class="banner-bg" mode="widthFix" src="/images/all/bg02_mine.png"></image>
         <view class="info-box flex">
             <view class="avatar-box">
-                <image class="avatar" mode="aspectFill" src="/images/all/img06.png"></image>
+                <image class="avatar" mode="aspectFill" src="{{userInfo.headimgurl}}"></image>
             </view>
             <view class="info-others">
-                <view class="info-others-nickname flex flex-ver">
-                    <text class="nickname">我是昵称</text>
+                <view bindtap="base_jump" data-url="/pages/me/completeInfo/completeInfo?type={{userInfo.root==1?'complete':'edit'}}"
+                    class="info-others-nickname flex flex-ver">
+                    <text class="nickname">{{userInfo.nickname}}</text>
                     <image class="arrow-icon" mode="aspectFill" src="/images/all/icon17.png"></image>
                 </view>
-                <view wx:if="{{false}}" bindtap="base_jump" data-url="/pages/me/completeInfo/completeInfo" class="info-others-tips flex flex-ver flex-align-center">
+                <view wx:if="{{userInfo.root==1}}" bindtap="base_jump" data-url="/pages/me/completeInfo/completeInfo?type=complete"
+                    class="info-others-tips flex flex-ver flex-align-center">
                     <text class="tip-txt">完善信息后可升级为会员</text>
                     <image class="arrow-icon-mini" mode="aspectFill" src="/images/all/icon17.png"></image>
                 </view>
@@ -40,28 +42,36 @@
                     <view class="tab-txt">
                         待支付
                     </view>
-                    <view class="tab-notification flex flex-center">2</view>
+                    <view hidden="{{userInfo.order_status.pay==0}}" class="tab-notification flex flex-center">
+                        {{userInfo.order_status.pay}}
+                    </view>
                 </view>
                 <view bindtap="base_jump" data-url="/pages/me/orderList/orderList?status=2" class="tab-item">
                     <image class="tab-icon" src="/images/all/icon20.png"></image>
                     <view class="tab-txt">
                         待兑换
                     </view>
-                    <view class="tab-notification flex flex-center">2</view>
+                    <view hidden="{{userInfo.order_status.exchange==0}}" class="tab-notification flex flex-center">
+                        {{userInfo.order_status.exchange}}
+                    </view>
                 </view>
                 <view bindtap="base_jump" data-url="/pages/me/orderList/orderList?status=3" class="tab-item">
                     <image class="tab-icon" src="/images/all/icon21.png"></image>
                     <view class="tab-txt">
                         已完成
                     </view>
-                    <view class="tab-notification flex flex-center">2</view>
+                    <view hidden="{{userInfo.order_status.complete==0}}" class="tab-notification flex flex-center">
+                        {{userInfo.order_status.complete}}
+                    </view>
                 </view>
                 <view bindtap="base_jump" data-url="/pages/me/orderList/orderList?status=4" class="tab-item">
                     <image class="tab-icon" src="/images/all/icon22.png"></image>
                     <view class="tab-txt">
                         已关闭
                     </view>
-                    <view class="tab-notification flex flex-center">2</view>
+                    <view hidden="{{userInfo.order_status.close==0}}" class="tab-notification flex flex-center">
+                        {{userInfo.order_status.close}}
+                    </view>
                 </view>
             </view>
         </view>

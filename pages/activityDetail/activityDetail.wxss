@@ -10,6 +10,10 @@ page {
     background-color: #fff;
 }
 
+.rich-txt image{
+    width: 100%!important;
+}
+
 .brief {
     height: 262rpx;
 }
@@ -95,6 +99,7 @@ page {
 .hd-icon {
     width: 32rpx;
     height: 32rpx;
+    flex-shrink: 0;
 }
 
 .hd-txt {

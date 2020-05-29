@@ -7,10 +7,13 @@
 		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
+		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
-		"autoAudits": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": false,
+		"scopeDataCheck": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": false,
 		"uploadWithSourceMap": true,
@@ -18,11 +21,13 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.9.2",
-	"appid": "wxe25cbea0d2a8b4a8",
+	"appid": "wx18b9669485f81907",
 	"projectname": "xuhe",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -54,10 +59,10 @@
 			"current": -1,
 			"list": [
 				{
-					"id": -1,
-					"name": "演出详情",
+					"id": 0,
+					"name": "活动详情",
 					"pathName": "pages/activityDetail/activityDetail",
-					"query": "",
+					"query": "id=9",
 					"scene": null
 				},
 				{
@@ -124,24 +129,24 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 10,
 					"name": "我的订单",
 					"pathName": "pages/me/orderList/orderList",
-					"query": "",
+					"query": "status=0",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 11,
 					"name": "确认订单",
 					"pathName": "pages/confirmOrder/confirmOrder",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 12,
 					"name": "订单详情",
 					"pathName": "pages/me/orderDetail/orderDetail",
-					"query": "",
+					"query": "id=14",
 					"scene": null
 				},
 				{
@@ -149,6 +154,13 @@
 					"name": "我的收藏",
 					"pathName": "pages/me/collectList/collectList",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测试页面",
+					"pathName": "pages/test/test",
+					"query": "id=8",
 					"scene": null
 				}
 			]

@@ -20,11 +20,12 @@ function space(str) {
 }
 
 // 简易提示框
-function Toast(msg = '提示', duration = 1500) {
+function Toast(msg = '提示', duration = 1500, mask = false) {
     wx.showToast({
         title: msg,
         icon: 'none',
-        duration: duration
+        duration: duration,
+        mask: mask
     })
 }
 
@@ -42,8 +43,8 @@ function errorToast(msg = '错误', duration = 1500) {
 function successToast(msg = '成功', duration = 1500) {
     wx.showToast({
         title: msg,
-        // icon: 'success',
-        image: '/images/icons/success.png',
+        icon: 'success',
+        // image: '/images/icons/success.png',
         duration: duration
     })
 }
@@ -107,6 +108,7 @@ function setHeader(that) {
 function dataset(e, key) {
     return e.currentTarget.dataset[key]
 }
+
 
 module.exports = {
     formatTime,

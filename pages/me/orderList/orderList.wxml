@@ -21,22 +21,22 @@
             </view>
         </scroll-view>
         <!-- 1有结果 -->
-        <view wx:if="{{!true}}" class="order-list">
-            <view class="order-item" wx:for="{{6}}" wx:key="index">
+        <view wx:if="{{!isEmpty}}" class="order-list">
+            <view class="order-item" wx:for="{{list}}" wx:key="index">
                 <view class="item-t flex">
                     <view class="item-cover-box">
-                        <image src="../../../images/all/img05.jpg" class="item-cover" mode="aspectFill"></image>
+                        <image src="{{item.detail[0].cover}}" class="item-cover" mode="aspectFill"></image>
                     </view>
-                    <view class="item-infos">
-                        <view class="item-tit flex-1 line-hide line-2">
-                            宫崎骏·久石让动漫视听系列主题音乐会宫崎骏·久石让动漫视听系列主题音乐会
+                    <view class="item-infos flex-1">
+                        <view class="item-tit line-hide line-2">
+                            {{item.detail[0].name}}
                         </view>
                         <view class="item-others">
                             <view class="item-date">
-                                2020.04.19
+                                {{item.date}}
                             </view>
                             <view class="item-time">
-                                20:30-21:30 演出场
+                                {{item.time}}
                             </view>
                         </view>
                     </view>
@@ -47,20 +47,25 @@
                             总价
                         </view>
                         <view class="item-price">
-                            ￥180.00
+                            ￥{{item.amount}}
                         </view>
                     </view>
                     <view class="btn-box flex flex-ver">
-                        <view class="item-btn plain">取消</view>
-                        <view class="item-btn plain" bindtap="base_jump" data-url="/pages/me/orderDetail/orderDetail">详情</view>
-                        <view class="item-btn ">支付</view>
-                        <!-- 
-                         <view class="item-btn">详情</view>
-                        -->
-                        <!-- 
-                          <view class="item-btn plain">删除</view>
-                          <view class="item-btn">详情</view>
-                        -->
+                        <!-- 待支付 -->
+                        <block wx:if="{{item.status==1}}">
+                            <view class="item-btn plain" bindtap="showCancelMask" data-index="{{index}}">取消</view>
+                            <view class="item-btn plain" bindtap="base_jump" data-url="/pages/me/orderDetail/orderDetail?id={{item.id}}&index={{index}}">详情</view>
+                            <view class="item-btn" bindtap="base_jump" data-url="/pages/me/orderDetail/orderDetail?id={{item.id}}">支付</view>
+                        </block>
+                        <!-- 待兑换 已完成 -->
+                        <block wx:elif="{{item.status==2||item.status==3}}">
+                            <view class="item-btn" bindtap="base_jump" data-url="/pages/me/orderDetail/orderDetail?id={{item.id}}&index={{index}}">详情</view>
+                        </block>
+                        <!-- 已关闭 item.status==4-->
+                        <block wx:else>
+                            <view class="item-btn plain" bindtap="showDeleteMask" data-index="{{index}}">删除</view>
+                            <view class="item-btn" bindtap="base_jump" data-url="/pages/me/orderDetail/orderDetail?id={{item.id}}&index={{index}}">详情</view>
+                        </block>
                     </view>
                 </view>
             </view>

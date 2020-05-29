@@ -3,7 +3,7 @@
     <view class="content">
         <!-- 1有结果 -->
         <view wx:if="{{list.length>0}}" class="contact-list">
-            <view wx:for="{{list}}" wx:key="index" class="contact-item">
+            <view wx:for="{{list}}" wx:key="index" data-index="{{index}}" bindtap="selectContact" class="contact-item">
                 <view class="item-t flex flex-ver flex-jcsb">
                     <view class="item-name">
                         {{item.name}}
@@ -13,16 +13,17 @@
                     </view>
                 </view>
                 <view class="item-b flex flex-ver flex-jcsb">
-                    <view class="default-box  flex flex-ver">
-                        <image class="default-icon" src="/images/all/icon38.png"></image>
-                        <text class="default-txt">{{true?'设为默认':'默认联系人'}}</text>
+                    <view wx:if="{{type != 'select'}}" catchtap="setDefault" data-index="{{index}}" class="default-box  flex flex-ver">
+                        <image class="default-icon" src="/images/all/icon{{item.is_default==0?38:37}}.png"></image>
+                        <text class="default-txt">{{item.is_default==0?'设为默认':'默认联系人'}}</text>
                     </view>
+                    <view wx:else></view>
                     <view class="operate-box  flex flex-ver">
-                        <view bindtap="base_jump" data-url="/pages/me/contactEdit/contactEdit?index={{index}}" class="operate-item flex flex-ver">
+                        <view catchtap="base_jump" data-url="/pages/me/contactEdit/contactEdit?index={{index}}" class="operate-item flex flex-ver">
                             <image class="operate-icon" src="/images/all/icon39.png"></image>
                             <text class="operate-txt">编辑</text>
                         </view>
-                        <view bindtap="showMask" data-index="{{index}}" class="operate-item flex flex-ver">
+                        <view catchtap="showMask" data-index="{{index}}" class="operate-item flex flex-ver">
                             <image class="operate-icon" src="/images/all/icon40.png"></image>
                             <text class="operate-txt">删除</text>
                         </view>

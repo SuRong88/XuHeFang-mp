@@ -5,11 +5,19 @@ const Base = require('../../../utils/base.js');
 const Req = require('../../../utils/request.js');
 const VM = {
     data: {
-        showMask: true
+        showMask: true,
+        userInfo:null
     }
 }
 
 VM.init = function() {
+    Req.request('getUserInfo',null , {
+        method: 'get'
+    }, (res) => {
+        this.setData({
+            userInfo:res.data
+        })
+    })
 }
 
 VM.onLoad = function(query) {

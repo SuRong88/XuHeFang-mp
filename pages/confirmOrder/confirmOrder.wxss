@@ -104,6 +104,7 @@ page {
 .hd-icon {
     width: 32rpx;
     height: 32rpx;
+    flex-shrink: 0;
 }
 
 .hd-txt {

@@ -149,6 +149,7 @@ page {
 .tip-icon {
     width: 28rpx;
     height: 28rpx;
+    flex-shrink: 0;
 }
 
 .tip-txt {
@@ -165,6 +166,7 @@ page {
 .hd-icon {
     width: 32rpx;
     height: 32rpx;
+    flex-shrink: 0;
 }
 
 .hd-txt {

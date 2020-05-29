@@ -3,12 +3,10 @@ const Util = require('../../utils/util.js');
 const Base = require('../../utils/base.js');
 const Req = require('../../utils/request.js');
 const VM = {
-    data: {
-    }
+    data: {}
 }
 
-VM.init = function(query) {
-}
+VM.init = function(query) {}
 
 VM.onLoad = function(query) {
     this.init(query)

@@ -17,18 +17,20 @@
     position: relative;
     z-index: 4;
     background-color: #fff;
+    /* transition: all 0.2s; */
     /* transform: translateX(-50rpx); */
 }
 
 .collect-item .item-cancel {
+    flex-shrink: 0;
     width:128rpx;
     height:262rpx;
     background:rgba(224,32,32,1);
     border-radius:16rpx 0px 0px 16rpx;
-    position: absolute;
+   /* position: absolute;
     top: 30rpx;
     right: 0;
-    z-index: 2;
+    z-index: 2; */
     font-size: 28rpx;
     color: rgba(255, 255, 255, 1);
     line-height: 52rpx;
@@ -52,12 +54,14 @@
     height: 262rpx;
 }
 
-.item-r {
-    margin-left: 30rpx;
+.item-m {
+    width: calc(100vw - 290rpx);
+    margin:0 30rpx;
     position: relative;
+    flex-shrink: 0;
 }
 
-.item-r .item-tit {
+.item-m .item-tit {
     font-size: 32rpx;
     font-weight: 700;
     color: rgba(29, 29, 29, 1);
@@ -65,25 +69,25 @@
     margin-bottom: 10rpx;
 }
 
-.item-r .item-details {
+.item-m .item-details {
     font-size: 22rpx;
     color: rgba(153, 153, 153, 1);
     line-height: 26rpx;
 }
 
-.item-r .item-date {
+.item-m .item-date {
     margin-bottom: 8rpx;
 }
 
-.item-r .item-address {
+.item-m .item-address {
     margin-bottom: 8rpx;
 }
 
-.item-r .item-remain {
+.item-m .item-remain {
     margin-bottom: 0;
 }
 
-.item-r .item-price {
+.item-m .item-price {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -92,7 +96,7 @@
     color: rgba(252, 84, 3, 1);
 }
 
-.item-r .item-price .price {
+.item-m .item-price .price {
     font-size: 34rpx;
 }
 

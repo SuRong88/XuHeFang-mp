@@ -2,35 +2,36 @@
     <mp-header isHome="{{isHome}}" showBack cln="'header'" title="我的收藏"></mp-header>
     <view class="content">
         <!-- 列表 -->
-        <view wx:if="{{true}}" class="collect-list">
-            <view wx:for="{{list}}" wx:key="index" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE"
+        <view wx:if="{{list.length>0}}" class="collect-list">
+            <view wx:for="{{list}}" wx:key="index" bindtap="base_jump" data-url="/pages/activityDetail/activityDetail?id={{item.goods_id}}"  bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE"
                 data-index="{{index}}" class="collect-item">
                 <view style="{{item.txtStyle}}" class="item-main flex">
                     <view class="item-l">
-                        <image mode="aspectFill" class="item-img" src="/images/all/img02.png"></image>
+                        <image mode="aspectFill" class="item-img" src="{{item.cover}}"></image>
                     </view>
-                    <view class="item-r">
-                        <view class="item-tit line-hide line-2">宫崎骏·久石让动漫视听系列主题音乐会宫崎骏·久石让动漫视听系列主题音乐会</view>
+                    <view class="item-m">
+                        <view class="item-tit line-hide line-2">{{item.name}}</view>
                         <view class="item-details">
                             <view class="item-date">
-                                2020.04.15-04.19
+                                {{item.startDate}} - {{item.endDate}}
                             </view>
-                            <view class="item-address ell">
-                                深圳南山文体中心剧院小剧院
+                            <view class="item-address line-hide line-2">
+                                {{item.address}}
                             </view>
                             <view class="item-remain">
-                                库存：360
+                                库存：{{item.stock<=999?item.stock:'999+'}}
                             </view>
                         </view>
                         <view class="item-price">
-                            ¥<text class="price">280</text>
+                            ¥<text class="price">{{item.price}}</text>
                         </view>
                     </view>
+                    <view catchtap="cancelCollect" data-index="{{index}}" class="item-r item-cancel flex flex-center">
+                        <view class="item-cancel-txt">取消</view>
+                        <view class="item-cancel-txt">收藏</view>
+                    </view>
                 </view>
-                <view class="item-cancel flex flex-center">
-                    <view class="item-cancel-txt">取消</view>
-                    <view class="item-cancel-txt">收藏</view>
-                </view>
+                
             </view>
         </view>
         <!-- 2无结果 -->

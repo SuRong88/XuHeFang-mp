@@ -3,9 +3,8 @@
     <mp-header isHome="{{isHome}}" showBack title="关于我们"></mp-header>
     <view class="content">
         <view class="rich-txt">
-            旭和坊的座右铭是：用心做音乐，在我看来这旭和坊的座右铭是：用心做音乐，在我看来这旭和坊的座右铭是：用心做音乐，在我看来这旭和坊的座右铭是：用心做音乐，在我看来这旭和坊的座右铭是：用心做音乐，在我看来这
             <!-- == wxParse == -->
-            <template is="wxParse" data="{{wxParseData: richTxt.nodes}}"></template>
+            <template is="wxParse" data="{{wxParseData: aboutContent.nodes}}"></template>
             <!--== /wxParse ==-->
         </view>
     </view>

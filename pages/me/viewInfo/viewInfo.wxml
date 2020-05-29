@@ -4,15 +4,15 @@
         <view class="info-list">
             <view class="info-item flex flex-ver flex-jcsb">
                 <view class="item-label">姓名</view>
-                <view class="item-txt">郑钉玲</view>
+                <view class="item-txt">{{userInfo.realname}}</view>
             </view>
             <view class="info-item flex flex-ver flex-jcsb">
                 <view class="item-label">性别</view>
-                <view class="item-txt">女</view>
+                <view class="item-txt">{{userInfo.sex==0?'女':'男'}}</view>
             </view>
             <view class="info-item flex flex-ver flex-jcsb">
                 <view class="item-label">手机号</view>
-                <view class="item-txt">15626129191</view>
+                <view class="item-txt">{{userInfo.phone}}</view>
             </view>
         </view>
     </view>

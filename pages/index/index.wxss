@@ -114,13 +114,13 @@ page {
 }
 
 .item-l .item-status.status01 {
+    background: linear-gradient(90deg, rgba(4, 203, 121, 1) 0%, rgba(73, 220, 142, 1) 100%);
     color: rgba(0, 81, 38, 1);
-    background: linear-gradient(90deg, rgba(206, 255, 146, 1) 0%, rgba(254, 255, 134, 1) 100%);
 }
 
 .item-l .item-status.status02 {
-    background: linear-gradient(90deg, rgba(4, 203, 121, 1) 0%, rgba(73, 220, 142, 1) 100%);
     color: rgba(0, 81, 38, 1);
+    background: linear-gradient(90deg, rgba(206, 255, 146, 1) 0%, rgba(254, 255, 134, 1) 100%);
 }
 
 .item-l .item-status.status03 {
