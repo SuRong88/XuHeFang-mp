@@ -67,11 +67,6 @@ App({
     },
     // 判断有没有授权用户信息
     checkAuthorize: function(cb_success, cb_fail) {
-        // 保留
-        // if (!wx.getStorageSync('token')) {
-        //     console.log('token缺失')
-        //     return cb_fail()
-        // }
         wx.getSetting({
             success: res => {
                 // 检查授权
